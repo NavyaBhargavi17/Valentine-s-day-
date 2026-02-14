@@ -2,86 +2,108 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <title>For My Bangaram 💖</title>
 
 <style>
 body{
  margin:0;
- font-family:Poppins;
+ font-family:'Poppins',sans-serif;
  background:linear-gradient(135deg,#ffdfe8,#fff5f8);
  text-align:center;
+ color:#444;
  overflow-x:hidden;
 }
 
-.page{display:none;min-height:100vh;justify-content:center;align-items:center;}
+h1,h2,h3{
+ font-family:'Playfair Display',serif;
+ color:#d46a84;
+}
+
+.page{
+ display:none;
+ min-height:100vh;
+ justify-content:center;
+ align-items:center;
+ padding:20px 0;
+}
 .active{display:flex;}
 
 .card{
- background:white;
+ background:rgba(255,255,255,0.95);
  padding:25px;
  border-radius:25px;
- width:90%;max-width:360px;
- box-shadow:0 8px 25px rgba(255,182,193,0.4);
+ width:90%;
+ max-width:360px;
+ box-shadow:0 8px 25px rgba(255,182,193,0.35);
 }
 
 button{
  padding:12px 20px;
  border:none;
  border-radius:30px;
- background:#ff9bb3;
+ background:#ffb6c9;
  color:white;
  margin:8px;
 }
 
-/* hearts */
+/* Hearts */
 .heart{
  position:fixed;
- width:24px;height:24px;
+ width:26px;height:26px;
  background:#ff6f91;
  bottom:-30px;
  transform:rotate(45deg);
  animation:floatUp 6s linear forwards;
 }
 .heart::before,.heart::after{
- content:'';position:absolute;
- width:24px;height:24px;
- background:#ff6f91;border-radius:50%;
+ content:'';
+ position:absolute;
+ width:26px;height:26px;
+ background:#ff6f91;
+ border-radius:50%;
 }
-.heart::before{top:-12px;}
-.heart::after{left:-12px;}
-@keyframes floatUp{from{bottom:-30px;}to{bottom:110vh;}}
+.heart::before{top:-13px;}
+.heart::after{left:-13px;}
+@keyframes floatUp{
+ from{bottom:-30px;}
+ to{bottom:110vh;}
+}
 
-/* popup */
+/* Popup */
 .popup{
- position:fixed;inset:0;
+ position:fixed;
+ inset:0;
  background:rgba(0,0,0,.4);
- display:none;justify-content:center;align-items:center;
+ display:none;
+ justify-content:center;
+ align-items:center;
  z-index:99;
 }
 .popupBox{
- background:white;padding:25px;border-radius:20px;width:80%;max-width:300px;
+ background:white;
+ padding:25px;
+ border-radius:20px;
+ width:80%;
+ max-width:300px;
 }
 
-/* kiss */
+/* Kiss */
 .kiss{
- position:fixed;font-size:30px;
+ position:fixed;
+ font-size:28px;
  animation:kissFly 2s forwards;
 }
 @keyframes kissFly{
  from{opacity:1;}
- to{opacity:0;transform:translateY(-150px) scale(2);}
+ to{opacity:0; transform:translateY(-150px) scale(2);}
 }
 </style>
 </head>
 
 <body>
-
-<!-- SOUNDS -->
-<audio id="clickS" src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b0c4f.mp3"></audio>
-<audio id="winS" src="https://cdn.pixabay.com/audio/2022/03/26/audio_1c8e6e4a42.mp3"></audio>
-<audio id="kissS" src="https://cdn.pixabay.com/audio/2022/03/10/audio_c8c8a73467.mp3"></audio>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
@@ -91,100 +113,100 @@ button{
 </div>
 </div>
 
+<!-- SOUNDS -->
+<audio id="clickS" src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b0c4f.mp3"></audio>
+<audio id="winS" src="https://cdn.pixabay.com/audio/2022/03/26/audio_1c8e6e4a42.mp3"></audio>
+<audio id="kissS" src="https://cdn.pixabay.com/audio/2022/03/10/audio_c8c8a73467.mp3"></audio>
+
 <!-- PAGE 1 -->
 <div class="page active" id="p1">
 <div class="card">
 <h3>Secret Page for you 😌💗</h3>
-<input id="pass" type="password">
+<input id="pass" type="password" placeholder="Password"><br>
 <button onclick="unlock()">Open 💌</button>
 </div></div>
 
-<!-- PAGE 2 TYPING -->
+<!-- PAGE 2 -->
 <div class="page" id="p2">
 <div class="card">
 <p id="type"></p>
 <button onclick="show(3)">Next 😘</button>
 </div></div>
 
-<!-- PAGE 3 VALENTINE -->
+<!-- PAGE 3 -->
 <div class="page" id="p3">
 <div class="card">
 <h3>Will you be my Valentine? 💖</h3>
+<p>Try clicking No button 😜</p>
 <button onclick="show(4)">Yes 💗</button>
-<button onclick="runNo()" id="noBtn">No 😝</button>
+<button onclick="jump()" id="noBtn">No 😝</button>
 </div></div>
 
-<!-- PAGE 4 QUIZ INTRO -->
+<!-- PAGE 4 QUIZ -->
 <div class="page" id="p4">
-<div class="card">
-<h3>Ready for Love Quiz? 😜</h3>
-<button onclick="quizYes()">Yes 😎</button>
-<button onclick="quizNo()">No 😏</button>
-</div></div>
-
-<!-- PAGE 5 QUIZ -->
-<div class="page" id="p5">
 <div class="card">
 <h3>Love Quiz 💖</h3>
 <p id="q"></p>
 <div id="opts"></div>
 </div></div>
 
-<!-- PAGE 6 SCORE -->
-<div class="page" id="p6">
+<!-- PAGE 5 SCORE -->
+<div class="page" id="p5">
 <div class="card">
 <h3>Your score 😍</h3>
 <p id="finalScore"></p>
-<button onclick="show(7)">Memories 📸</button>
+<button onclick="show(6)">Memories 📸</button>
 </div></div>
 
-<!-- PAGE 7 MEMORIES -->
-<div class="page" id="p7">
+<!-- PAGE 6 MEMORIES -->
+<div class="page" id="p6">
 <div class="card">
 <h3>Our Memories 📸</h3>
-<img id="photo" width="220"><br>
-<button onclick="show(8)">Next 💕</button>
+<img id="photo" width="220" style="border-radius:20px;"><br>
+<button onclick="show(7)">Next 💕</button>
 </div></div>
 
-<!-- PAGE 8 LETTER -->
-<div class="page" id="p8">
+<!-- PAGE 7 LETTER -->
+<div class="page" id="p7">
 <div class="card">
 <p>
-Nanna 🫶  
-Ninnu kalavadam na life lo best thing.  
-You became my safe place and happiness.  
-Nee smile, nee nature, nee cute habits — everything precious 😌💗  
-You’re not just my boyfriend, nuvvu na person 💞  
-Always yours, Navya 💖
+Nanna …🫶  
+Ninnu kalavadam honestly na life lo best thing ani cheppachu...  
+Always yours, Navya 💞
 </p>
-<button onclick="show(9)">Next 😘</button>
+<button onclick="show(8)">Next 😘</button>
 </div></div>
 
-<!-- PAGE 9 KISS -->
-<div class="page" id="p9">
+<!-- PAGE 8 -->
+<div class="page" id="p8">
 <div class="card">
-<h3>Sending you kisses 💋</h3>
-<button onclick="kiss()">Tap 💋</button>
-<button onclick="show(10)">Next 💗</button>
+<p>Waiting for your Valentine gift too 😜</p>
+<button onclick="kissExplosion()">Kiss kavaalaa?💋</button>
+<button onclick="show(9)">Final Surprise 💐</button>
 </div></div>
 
-<!-- PAGE 10 BOUQUET -->
-<div class="page" id="p10">
+<!-- PAGE 9 BOUQUET -->
+<div class="page" id="p9">
 <div class="card">
 <h3>This bouquet is for you 💐</h3>
 <button onclick="flowers()">Open Bouquet 💐</button>
 <div id="bouquet" style="display:none;font-size:60px;">💐🌹🌸🌷🌺</div>
-<p id="bmsg" style="display:none;">For my favorite person 😄💖</p>
 </div></div>
 
 <script>
 
-/* sound */
-function play(id){document.getElementById(id).play();}
-
 /* popup */
-function pop(msg){popText.innerText=msg;popup.style.display="flex";}
+function pop(msg){
+ popText.innerText=msg;
+ popup.style.display="flex";
+}
 function closePop(){popup.style.display="none";}
+
+/* sound */
+function play(id){
+ document.getElementById(id).currentTime=0;
+ document.getElementById(id).play();
+}
 
 /* hearts */
 setInterval(()=>{
@@ -202,45 +224,37 @@ function show(n){
  document.getElementById("p"+n).classList.add("active");
 }
 
-/* password */
+/* Funny Password */
 function unlock(){
  if(pass.value=="love") show(2);
- else pop("Wrong password 😜");
+ else pop("Wrong password 😜 Are you even my Lokesh?");
 }
 
-/* typing message */
-let msg=`Dear Lokesh  
-You came into my life and made ordinary days special.  
-You are my calm, my smile, my favorite notification.  
-We should always stay together.  
-Forever yours, Navya 🤍🫶`;
+/* typing */
+let msg="Dear Lokesh 💌 You made my days special.";
 let i=0;
 (function type(){
  if(i<msg.length){
-  type.innerHTML+=msg[i++];
+  document.getElementById("type").innerHTML+=msg[i++];
   setTimeout(type,40);
  }
 })();
 
-/* running no */
-function runNo(){
- pop("No button run away 😜");
- noBtn.style.position="absolute";
- noBtn.style.left=Math.random()*200+"px";
- noBtn.style.top=Math.random()*300+"px";
+/* Funny No button */
+function jump(){
+ pop("Ayyoo 😝 No clicking allowed! Say YES only 💖");
+ let b=noBtn;
+ b.style.position="absolute";
+ b.style.left=Math.random()*200+"px";
+ b.style.top=Math.random()*300+"px";
 }
-
-/* quiz intro */
-function quizYes(){pop("I knew it 😎");show(5);}
-function quizNo(){pop("Scared ah? 😜 Try anyway!");}
 
 /* QUIZ */
 let quiz=[
 ["When relationship started?","Jan5 2023","Jan5 2022","March 1","Jan5 2022"],
-["Our proper First kiss?","Jan19 2026","Feb 1 2026","Jan 27 2026","Jan19 2026"],
-["What I call you when I get more love?","Nanna","Bujji","Bangaram","Bangaram"],
 ["Who loves more?","Me","You","Both","Me"]
 ];
+
 let qi=0,score=0;
 
 function loadQ(){
@@ -256,13 +270,14 @@ loadQ();
 
 function ans(a){
  if(a==quiz[qi][4]){
-  score++; play("winS"); pop("Correct 😍");
- }else pop("Wrong 😜");
+  score++; play("winS");
+  pop("Correct 😍 Wahh memory strong!");
+ } else pop("Wrong 😜 Love memory weak ah?");
  qi++;
  if(qi<quiz.length) loadQ();
  else{
-  finalScore.innerText="Score: "+score+" / "+quiz.length+" 💖";
-  show(6);
+  finalScore.innerHTML="Score: "+score+" 💖";
+  show(5);
  }
 }
 
@@ -274,14 +289,14 @@ let photos=[
 ];
 let pi=0;
 setInterval(()=>{
- if(p7.classList.contains("active")){
+ if(p6.classList.contains("active")){
   photo.src=photos[pi];
   pi=(pi+1)%photos.length;
  }
 },2000);
 
 /* kiss */
-function kiss(){
+function kissExplosion(){
  play("kissS");
  for(let i=0;i<20;i++){
   let k=document.createElement("div");
@@ -296,10 +311,9 @@ function kiss(){
 
 /* bouquet */
 function flowers(){
- play("winS");
  bouquet.style.display="block";
- bmsg.style.display="block";
- pop("Flowers for you 😄💐");
+ play("winS");
+ pop("Flowers for my favorite person 😘💐");
 }
 
 </script>
