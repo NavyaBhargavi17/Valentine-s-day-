@@ -5,73 +5,96 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-<title>For Lokesh ❤️</title>
+<title>For My Bangaram 💖</title>
 
 <style>
 
 body{
   margin:0;
-  font-family:Poppins;
-  background:linear-gradient(135deg,#fdf0f3,#f7d9e3);
-  color:#333;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#ffdfe8,#fff5f8);
   text-align:center;
+  color:#444;
+}
+
+h1,h2,h3{
+  font-family:'Playfair Display',serif;
+  color:#d46a84;
 }
 
 /* Pages */
 .page{
   display:none;
-  height:100vh;
+  min-height:100vh;
   justify-content:center;
   align-items:center;
+  padding:20px 0;
 }
+.active{display:flex;}
 
-.active{
-  display:flex;
-}
-
-/* Card */
 .card{
-  background:rgba(255,255,255,0.75);
-  backdrop-filter:blur(12px);
-  padding:30px;
-  border-radius:20px;
-  width:85%;
-  max-width:350px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-}
-
-/* Headings */
-h2,h3{
-  font-family:"Playfair Display";
-  color:#b76e79;
+  background:rgba(255,255,255,0.95);
+  padding:25px;
+  border-radius:25px;
+  width:90%;
+  max-width:360px;
+  box-shadow:0 8px 25px rgba(255,182,193,0.35);
+  position:relative;
+  z-index:5;
 }
 
 /* Buttons */
 button{
-  padding:12px 22px;
+  padding:12px 20px;
   border:none;
   border-radius:30px;
-  background:#b76e79;
+  background:#ffb6c9;
   color:white;
-  font-size:14px;
   margin:8px;
+  font-size:14px;
 }
 
-/* Input */
-input{
-  padding:12px;
-  border-radius:12px;
-  border:1px solid #ddd;
-  width:80%;
+/* 💖 WORKING FLOATING HEARTS */
+.heart{
+ position:fixed;
+ width:26px;
+ height:26px;
+ background:#ff6f91;
+ opacity:0.9;
+ z-index:1;
+ pointer-events:none;
+ bottom:-30px;
+ transform:rotate(45deg);
+ animation:floatUp 6s linear forwards;
 }
 
-/* Images */
-img{
-  width:200px;
-  height:250px;
-  object-fit:cover;
-  border-radius:15px;
-  margin-top:15px;
+.heart::before,
+.heart::after{
+ content:'';
+ position:absolute;
+ width:26px;
+ height:26px;
+ background:#ff6f91;
+ border-radius:50%;
+}
+
+.heart::before{ top:-13px; left:0; }
+.heart::after{ left:-13px; top:0; }
+
+@keyframes floatUp{
+ 0%{ bottom:-30px; opacity:1; }
+ 100%{ bottom:110vh; opacity:0; }
+}
+
+/* kiss */
+.kiss{
+ position:fixed;
+ font-size:28px;
+ animation:kissFly 2s forwards;
+}
+@keyframes kissFly{
+ from{opacity:1;}
+ to{opacity:0; transform:translateY(-150px) scale(2);}
 }
 
 </style>
@@ -79,138 +102,204 @@ img{
 
 <body>
 
-<!-- PAGE 1 PASSWORD -->
+<!-- PAGE 1 -->
 <div class="page active" id="p1">
 <div class="card">
-<h2>Private Page 🤍</h2>
-<p>Only for Lokesh</p>
-
-<input type="password" id="pass" placeholder="Enter password"><br><br>
-<button onclick="unlock()">Unlock</button>
+<h3>Secret Page for you 😌💗</h3>
+<input id="pass" type="password" placeholder="Password"><br>
+<button onclick="unlock()">Open 💌</button>
 </div>
 </div>
 
-<!-- PAGE 2 LETTER -->
+<!-- PAGE 2 -->
 <div class="page" id="p2">
 <div class="card">
-<h2>Dear Lokesh</h2>
-
-<p>
-You came into my life  
-and made ordinary days special.  
-
-You are my calm,  
-my smile,  
-my favorite notification.  
-everything happens for a reason 
-we need to promise that we should always 
-  be together in any situation
-Forever yours,  
-Navya 🤍🫶
-</p>
-
-<button onclick="next(3)">Next</button>
+<p id="type"></p>
+<button onclick="show(3)">Next 😘</button>
 </div>
 </div>
 
-<!-- PAGE 3 GAME -->
+<!-- PAGE 3 -->
 <div class="page" id="p3">
 <div class="card">
-<h3>Will you be my Valentine?</h3>
-
-<button onclick="yes()">Yes</button>
-<button id="noBtn" onclick="jump()">No</button>
-
-<br>
-<button onclick="back(2)">Back</button>
+<h3>Will you be my Valentine? 💖</h3>
+<p>Try clicking No button 😜</p>
+<button onclick="show(4)">Yes 💗</button>
+<button onclick="jump()" id="noBtn">No 😝</button>
 </div>
 </div>
 
-<!-- PAGE 4 SLIDESHOW -->
+<!-- PAGE 4 QUIZ -->
 <div class="page" id="p4">
 <div class="card">
-<h2>You chose YES 🤍</h2>
-
-<img id="slide">
-
-<p>
-You just made my heart happy.  
-I feel lucky to have you  🤍
-</p>
-
-<button onclick="next(5)">Next</button>
+<h3> Love Quiz 💖</h3>
+<p id="q"></p>
+<div id="opts"></div>
 </div>
 </div>
 
-<!-- PAGE 5 FINAL -->
+<!-- PAGE 5 -->
 <div class="page" id="p5">
 <div class="card">
-<h2>One Last Thing</h2>
+<h3>your score😍</h3>
+<p id="finalScore"></p>
+<p>Reward: tight hug + kisses 😘 (manam malli kalisinappudu)</p>
+<button onclick="show(6)">Memories 📸</button>
+</div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page" id="p6">
+<div class="card">
+<h3>Our Memories 📸</h3>
+
+<img id="photo" width="220" style="border-radius:20px;"><br>
 
 <p>
-No matter where life goes,  
-I just want you beside me.  
-
-You + Me  
-is my favorite love story.  
-
-Happy Valentine's Day 🤍
+These moments are special 🥹💗<br>
+But I need more memories for lifetime😘
 </p>
 
-<h3>This is just the beginning... 😉</h3>
+<button onclick="show(7)">Next 💕</button>
+</div>
+</div>
 
-<p>Now come claim your kiss 💞</p>
-  <h3> ummmahhhh 😘💋</h3>
+<!-- PAGE 7 -->
+<div class="page" id="p7">
+<div class="card">
+<p>
+Nanna …🫶  
+Ninnu kalavadam honestly na life lo best thing ani cheppachu. I didn’t expect someone to become this special to me, but nuvvu ala ayipoyav.
+You slowly became my favorite person, na safe place, and na daily happiness. Nuvvu care chese vidhanam, tease chesina, support chesina — everything feels so special to me.
+With you, even small moments feel big. Konni silly chats, random jokes, or just talking to you can change my whole mood. That’s your magic.
+Naku nachindi entante — you being YOU. Nee smile, nee nature, nee cute habits… even konchem stubbornness kuda 😜
+All of it is precious to me.
+Life ekkadiki theeskelina, I just want you to know you’re really special in my heart. Mana memories anni naku chala important, and I’m excited for many more with you.
+You’re not just my boyfriend,
+nuvvu na person 😌💗
+Lucky ga feel avtanu ninnu na life lo pettinanduku.
+Always yours,
+Navya 💞
+</p>
+<button onclick="show(8)">Next 😘</button>
+</div>
+</div>
 
-<button onclick="back(4)">Back</button>
+<!-- PAGE 8 -->
+<div class="page" id="p8">
+<div class="card">
+<p>
+Waiting for your Valentine gift too 😜<br><br>
+Nv ey na biggest gift anuko…<br><br>
+But chocolate + hug isthe inka baguntadhi,istha kadha? 😉💗
+</p>
+
+<button onclick="kissExplosion()">Kiss kavaalaa?💋</button>
+<button onclick="show(1)">Start Again 🔁</button>
+
 </div>
 </div>
 
 <script>
 
-// PASSWORD
-function unlock(){
- if(document.getElementById("pass").value=="love"){
-  show(2);
- } else alert("Hint: what are we?");
-}
+/* 💖 HEART GENERATOR */
+setInterval(()=>{
+ let h=document.createElement("div");
+ h.className="heart";
+ h.style.left=Math.random()*100+"vw";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
+},400);
 
-// PAGE CONTROL
+/* navigation */
 function show(n){
  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
  document.getElementById("p"+n).classList.add("active");
 }
 
-function next(n){show(n);}
-function back(n){show(n);}
+/* password */
+function unlock(){
+ if(pass.value=="love") show(2);
+ else alert("Wrong password 😜");
+}
 
-// JUMPING NO BUTTON
+/* typing */
+let msg=`Dear Lokesh  
+You came into my life and made ordinary days special. You are my calm, my smile, my favorite notification. everything happens for a reason we need to promise that we should always be together in any situation Forever yours, Navya 🤍🫶`;
+
+let i=0;
+(function type(){
+ if(i<msg.length){
+  document.getElementById("type").innerHTML+=msg[i++];
+  setTimeout(type,40);
+ }
+})();
+
+/* jumping no */
 function jump(){
  let b=document.getElementById("noBtn");
  b.style.position="absolute";
- b.style.left=Math.random()*250+"px";
- b.style.top=Math.random()*400+"px";
+ b.style.left=Math.random()*200+"px";
+ b.style.top=Math.random()*300+"px";
 }
 
-// YES BUTTON
-function yes(){
- show(4);
+/* QUIZ */
+let quiz=[
+["When relationship started?","Jan5 2023","Jan5 2022 ","March 1","Jan5 2022"],
+["Our proper First kiss?","Jan19 2026","Feb 1 2026","jan 27 2026","Jan19 2026"],
+["What I call you when I get more love ?","Nanna","Bujji","Bangaram","Bangaram"],
+["Who loves more?","Me","You","Both","Me"]
+];
+
+let qi=0,score=0;
+
+function loadQ(){
+ let q=quiz[qi];
+ document.getElementById("q").innerHTML=q[0];
+ document.getElementById("opts").innerHTML=
+ `<button onclick="ans('${q[1]}')">${q[1]}</button>
+  <button onclick="ans('${q[2]}')">${q[2]}</button>
+  <button onclick="ans('${q[3]}')">${q[3]}</button>`;
+}
+loadQ();
+
+function ans(a){
+ if(a==quiz[qi][4]) score++;
+ qi++;
+ if(qi<quiz.length) loadQ();
+ else{
+  document.getElementById("finalScore").innerHTML=
+  "Score: "+score+" / "+quiz.length+" 💖";
+  show(5);
+ }
 }
 
-// PHOTO SLIDESHOW
-let pics=[
+/* slideshow */
+let photos=[
 "https://i.postimg.cc/Ghh6KT8Y/Snapchat-1471127375.jpg",
 "https://i.postimg.cc/LsBVGvGH/Snapchat-1742409982.jpg",
 "https://i.postimg.cc/4yKV412c/Screenshot-20251022-212455.jpg"
 ];
-
-let i=0;
-let img=document.getElementById("slide");
-
+let pi=0;
 setInterval(()=>{
- img.src=pics[i];
- i=(i+1)%pics.length;
+ if(document.getElementById("p6").classList.contains("active")){
+  document.getElementById("photo").src=photos[pi];
+  pi=(pi+1)%photos.length;
+ }
 },2000);
+
+/* kiss */
+function kissExplosion(){
+ for(let i=0;i<20;i++){
+  let k=document.createElement("div");
+  k.innerHTML="💋";
+  k.className="kiss";
+  k.style.left=Math.random()*100+"vw";
+  k.style.top=Math.random()*100+"vh";
+  document.body.appendChild(k);
+  setTimeout(()=>k.remove(),2000);
+ }
+}
 
 </script>
 
