@@ -3,7 +3,6 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-
 <title>For My Bangaram 💖</title>
 
 <style>
@@ -16,7 +15,6 @@ body{
  overflow:hidden;
 }
 
-/* pages */
 .page{display:none;min-height:100vh;justify-content:center;align-items:center;}
 .active{display:flex;}
 
@@ -147,6 +145,11 @@ button{
 <div class="card">
 <h3>Your Score 😍</h3>
 <p id="finalScore"></p>
+<p>
+Reward:<br>
+I will give you a tight hug and kiss  
+(next time when we meet) 😘💗
+</p>
 <button onclick="pop('Proud of you 😘');show(7)">Memories 📸</button>
 </div>
 </div>
@@ -161,15 +164,25 @@ button{
 </div>
 </div>
 
-<!-- PAGE 8 LETTER -->
+<!-- PAGE 8 FULL LETTER -->
 <div class="page" id="p8">
 <div class="card">
 <p>
-Nanna…🫶  
-Ninnu kalavadam na life lo best thing.  
-You became my favorite person, safe place, daily happiness.  
-With you small moments feel big.  
-You’re not just my boyfriend — nuvvu na person 😌💗  
+Nanna …🫶  
+Ninnu kalavadam honestly na life lo best thing ani cheppachu.  
+I didn’t expect someone to become this special to me, but nuvvu ala ayipoyav.  
+You slowly became my favorite person, na safe place, and na daily happiness.  
+Nuvvu care chese vidhanam, tease chesina, support chesina — everything feels so special to me.  
+With you, even small moments feel big.  
+Konni silly chats, random jokes, or just talking to you can change my whole mood.  
+That’s your magic.  
+Naku nachindi entante — you being YOU.  
+Nee smile, nee nature, nee cute habits… even konchem stubbornness kuda 😜  
+All of it is precious to me.  
+Life ekkadiki theeskelina, I just want you to know you’re really special in my heart.  
+Mana memories anni naku chala important, and I’m excited for many more with you.  
+You’re not just my boyfriend, nuvvu na person 😌💗  
+Lucky ga feel avtanu ninnu na life lo pettinanduku.  
 Always yours, Navya 💞
 </p>
 <button onclick="show(9)">Next 😘</button>
@@ -180,8 +193,10 @@ Always yours, Navya 💞
 <div class="page" id="p9">
 <div class="card">
 <p>
-Waiting for your Valentine gift 😜<br>
-Chocolate + hug kavali 😉💗
+Waiting for your Valentine gift too 😜  
+Nv ey na biggest gift anuko…  
+But chocolate + hug isthe inka baguntadhi 😏💗  
+Istha kadha? 😉💖
 </p>
 <button onclick="kissExplosion();pop('Caught you 😘')">Kiss 💋</button>
 <button onclick="show(10)">Bouquet 💐</button>
@@ -240,6 +255,7 @@ let msg=`Dear Lokesh 💌
 You came into my life and made ordinary days special.
 You are my calm, my smile, my favorite notification.
 Forever yours, Navya 🤍🫶`;
+
 let i=0;
 (function type(){
  if(i<msg.length){
@@ -257,7 +273,7 @@ function jump(){
  b.style.top=Math.random()*250+"px";
 }
 
-/* QUIZ */
+/* quiz */
 let quiz=[
 ["When relationship started?","Jan5 2023","Jan5 2022","March 1","Jan5 2022"],
 ["First kiss?","Jan19 2026","Feb1","Jan27","Jan19 2026"],
@@ -275,26 +291,22 @@ function startQuiz(){
 
 function loadQ(){
  let q=quiz[qi];
- qEl=q[0];
- document.getElementById("q").innerText=qEl;
+ document.getElementById("q").innerText=q[0];
  opts.innerHTML=`<button onclick="ans('${q[1]}')">${q[1]}</button>
 <button onclick="ans('${q[2]}')">${q[2]}</button>
 <button onclick="ans('${q[3]}')">${q[3]}</button>`;
 }
 
 function ans(a){
- let wrong=[
+ let funny=[
  "Ayyoo wrong 😝",
  "Memory weak ah? 😂",
  "Think again bangaram 😜",
  "Wrong but cute 💗"
  ];
-
  if(a==quiz[qi][4]){
-  score++;
-  pop("Correct 😍 Smart boy!");
- } else pop(wrong[Math.floor(Math.random()*wrong.length)]);
-
+  score++; pop("Correct 😍 Smart boy!");
+ } else pop(funny[Math.floor(Math.random()*funny.length)]);
  qi++;
  if(qi<quiz.length) loadQ();
  else{
