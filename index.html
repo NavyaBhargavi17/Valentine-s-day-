@@ -2,8 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
 <title>For My Bangaram 💖</title>
 
@@ -124,13 +123,13 @@ button{
 </div>
 </div>
 
-<!-- PAGE 4 QUIZ INTRO -->
+<!-- PAGE 4 QUIZ START -->
 <div class="page" id="p4">
 <div class="card">
 <h3>Love Quiz Ready? 😏</h3>
-<p>Let's see how well you know us 💕</p>
-<button onclick="startQuiz()">Start 😎</button>
-<button onclick="pop('Scared ah? 😜 Start press cheyy!')">No 😝</button>
+<p>Let's see how well you know US 💕</p>
+<button onclick="startQuiz()">Yes Start 😎</button>
+<button onclick="pop('Scared ah? 😜 Press YES!')">No 😝</button>
 </div>
 </div>
 
@@ -148,7 +147,7 @@ button{
 <div class="card">
 <h3>Your Score 😍</h3>
 <p id="finalScore"></p>
-<button onclick="show(7)">Memories 📸</button>
+<button onclick="pop('Proud of you 😘');show(7)">Memories 📸</button>
 </div>
 </div>
 
@@ -162,7 +161,7 @@ button{
 </div>
 </div>
 
-<!-- PAGE 8 LOVE LETTER -->
+<!-- PAGE 8 LETTER -->
 <div class="page" id="p8">
 <div class="card">
 <p>
@@ -184,7 +183,7 @@ Always yours, Navya 💞
 Waiting for your Valentine gift 😜<br>
 Chocolate + hug kavali 😉💗
 </p>
-<button onclick="kissExplosion()">Kiss 💋</button>
+<button onclick="kissExplosion();pop('Caught you 😘')">Kiss 💋</button>
 <button onclick="show(10)">Bouquet 💐</button>
 </div>
 </div>
@@ -203,13 +202,13 @@ Chocolate + hug kavali 😉💗
 <div class="card">
 <h3>Okay bye 😜</h3>
 <p>Miss me little bit 🥹💗<br>Text me after this 😤💗</p>
-<button onclick="show(1)">Restart 🔁</button>
+<button onclick="pop('Still here ah? 😂');show(1)">Restart 🔁</button>
 </div>
 </div>
 
 <script>
 
-/* popup helper */
+/* popup */
 function pop(msg){
  popText.innerText=msg;
  popup.style.display="flex";
@@ -233,19 +232,18 @@ function show(n){
 /* password */
 function unlock(){
  if(pass.value=="love") show(2);
- else pop("Wrong password 😜 Try again bangaram!");
+ else pop("Wrong password bangaram 😜");
 }
 
-/* typing message */
+/* typing */
 let msg=`Dear Lokesh 💌
 You came into my life and made ordinary days special.
 You are my calm, my smile, my favorite notification.
 Forever yours, Navya 🤍🫶`;
-
 let i=0;
 (function type(){
  if(i<msg.length){
-  document.getElementById("typeText").innerHTML+=msg[i++];
+  typeText.innerHTML+=msg[i++];
   setTimeout(type,40);
  }
 })();
@@ -253,7 +251,7 @@ let i=0;
 /* jumping NO */
 function jump(){
  pop("No clicking allowed 😝 Say YES only!");
- let b=document.getElementById("noBtn");
+ let b=noBtn;
  b.style.position="absolute";
  b.style.left=Math.random()*250+"px";
  b.style.top=Math.random()*250+"px";
@@ -270,33 +268,32 @@ let quiz=[
 let qi=0,score=0;
 
 function startQuiz(){
- qi=0; score=0;
+ qi=0;score=0;
  loadQ();
  show(5);
 }
 
 function loadQ(){
  let q=quiz[qi];
- document.getElementById("q").innerText=q[0];
+ qEl=q[0];
+ document.getElementById("q").innerText=qEl;
  opts.innerHTML=`<button onclick="ans('${q[1]}')">${q[1]}</button>
 <button onclick="ans('${q[2]}')">${q[2]}</button>
 <button onclick="ans('${q[3]}')">${q[3]}</button>`;
 }
 
 function ans(a){
- let funnyWrong=[
+ let wrong=[
  "Ayyoo wrong 😝",
- "Think again bangaram 😜",
  "Memory weak ah? 😂",
+ "Think again bangaram 😜",
  "Wrong but cute 💗"
  ];
 
  if(a==quiz[qi][4]){
   score++;
   pop("Correct 😍 Smart boy!");
- } else {
-  pop(funnyWrong[Math.floor(Math.random()*funnyWrong.length)]);
- }
+ } else pop(wrong[Math.floor(Math.random()*wrong.length)]);
 
  qi++;
  if(qi<quiz.length) loadQ();
@@ -314,7 +311,7 @@ let photos=[
 ];
 let pi=0;
 setInterval(()=>{
- if(document.getElementById("p7").classList.contains("active")){
+ if(p7.classList.contains("active")){
   photo.src=photos[pi];
   pi=(pi+1)%photos.length;
  }
