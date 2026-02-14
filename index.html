@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,6 @@ body{
  overflow-x:hidden;
 }
 
-/* Pages */
 .page{display:none;min-height:100vh;justify-content:center;align-items:center;}
 .active{display:flex;}
 
@@ -25,6 +24,7 @@ body{
  width:90%;
  max-width:360px;
  box-shadow:0 8px 25px rgba(255,182,193,0.4);
+ position:relative;
 }
 
 button{
@@ -37,7 +37,7 @@ button{
  font-size:15px;
 }
 
-/* Floating Hearts */
+/* hearts */
 .heart{
  position:fixed;
  width:25px;height:25px;
@@ -57,7 +57,7 @@ button{
 .heart:after{left:-12px;}
 @keyframes floatUp{from{bottom:-30px;}to{bottom:110vh;}}
 
-/* Popup */
+/* popup */
 .popup{
  position:fixed;inset:0;
  background:rgba(0,0,0,.4);
@@ -67,7 +67,7 @@ button{
  background:white;padding:20px;border-radius:20px;width:80%;
 }
 
-/* Kiss */
+/* kiss */
 .kiss{position:fixed;font-size:28px;animation:kissFly 2s forwards;}
 @keyframes kissFly{to{opacity:0;transform:translateY(-150px) scale(2);}}
 </style>
@@ -75,69 +75,63 @@ button{
 
 <body>
 
-<!-- Popup -->
+<!-- POPUP -->
 <div class="popup" id="popup">
 <div class="popupBox">
 <p id="popText"></p>
 <button onclick="popup.style.display='none'">OK 💖</button>
 </div></div>
 
-<!-- PAGE 1 -->
+<!-- PAGE 1 PASSWORD -->
 <div class="page active" id="p1"><div class="card">
-<h3>Secret Page for you 😌💗</h3>
-<input id="pass" type="password" placeholder="Password">
-<button onclick="unlock()">Open 💌</button>
+<h3>Only for Lokesh 😌💗</h3>
+<input id="pass" type="password" placeholder="Enter password"><br>
+<button onclick="unlock()">Unlock 💌</button>
+<p style="font-size:12px;">Hint: what are we? 😉</p>
 </div></div>
 
-<!-- PAGE 2 TYPING LETTER -->
+<!-- PAGE 2 TYPING -->
 <div class="page" id="p2"><div class="card">
 <p id="type"></p>
 <button onclick="show(3)">Next 😘</button>
 </div></div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 VALENTINE -->
 <div class="page" id="p3"><div class="card">
 <h3>Will you be my Valentine? 💖</h3>
-<p>Try clicking No button 😜</p>
+<p>Try clicking No 😜</p>
 <button onclick="show(4)">Yes 💗</button>
 <button onclick="jump()" id="noBtn">No 😝</button>
 </div></div>
 
-<!-- PAGE 4 QUIZ INTRO -->
+<!-- PAGE 4 QUIZ -->
 <div class="page" id="p4"><div class="card">
-<h3>Ready for Love Quiz? 😜</h3>
-<button onclick="startQuiz()">Yes 😎</button>
-<button onclick="pop('Scared ah? 😂 Try anyway!')">No 😏</button>
-</div></div>
-
-<!-- PAGE 5 QUIZ -->
-<div class="page" id="p5"><div class="card">
 <h3>Love Quiz 💖</h3>
 <p id="q"></p>
 <div id="opts"></div>
 </div></div>
 
-<!-- PAGE 6 SCORE -->
-<div class="page" id="p6"><div class="card">
-<h3>Your score 😍</h3>
+<!-- PAGE 5 SCORE -->
+<div class="page" id="p5"><div class="card">
+<h3>Your Score 😍</h3>
 <p id="finalScore"></p>
-<p>Reward: tight hug + kisses 😘 (manam malli kalisinappudu)</p>
-<button onclick="show(7)">Memories 📸</button>
+<p>You win: hug + kisses 😘</p>
+<button onclick="show(6)">Memories 📸</button>
 </div></div>
 
-<!-- PAGE 7 MEMORIES -->
-<div class="page" id="p7"><div class="card">
+<!-- PAGE 6 MEMORIES -->
+<div class="page" id="p6"><div class="card">
 <h3>Our Memories 📸</h3>
 <img id="photo" width="220" style="border-radius:20px;"><br>
 <p>
 These moments are special 🥹💗<br>
 But I need more memories for lifetime😘
 </p>
-<button onclick="show(8)">Next 💕</button>
+<button onclick="show(7)">Next 💕</button>
 </div></div>
 
-<!-- PAGE 8 LONG LETTER -->
-<div class="page" id="p8"><div class="card">
+<!-- PAGE 7 FULL LOVE LETTER -->
+<div class="page" id="p7"><div class="card">
 <p>
 Nanna …🫶  
 Ninnu kalavadam honestly na life lo best thing ani cheppachu. I didn’t expect someone to become this special to me, but nuvvu ala ayipoyav.  
@@ -153,40 +147,41 @@ Life ekkadiki theeskelina, you’re really special in my heart.
 Mana memories anni naku chala important.  
 You’re not just my boyfriend, nuvvu na person 😌💗  
 Lucky ga feel avtanu ninnu na life lo pettinanduku.  
-Always yours, Navya 💞
+Always yours,  
+Navya 💞
 </p>
-<button onclick="show(9)">Next 😘</button>
+<button onclick="show(8)">Next 😘</button>
 </div></div>
 
-<!-- PAGE 9 -->
-<div class="page" id="p9"><div class="card">
+<!-- PAGE 8 GIFT -->
+<div class="page" id="p8"><div class="card">
 <p>
 Waiting for your Valentine gift too 😜  
 Nv ey na biggest gift anuko…  
 But chocolate + hug isthe inka baguntadhi 😉💗
 </p>
 <button onclick="kissExplosion()">Kiss kavaalaa?💋</button>
-<button onclick="show(10)">Bouquet 💐</button>
+<button onclick="show(9)">Bouquet 💐</button>
 </div></div>
 
-<!-- PAGE 10 -->
-<div class="page" id="p10"><div class="card">
+<!-- PAGE 9 BOUQUET -->
+<div class="page" id="p9"><div class="card">
 <h3>This bouquet is for you 💐</h3>
 <button onclick="flowers()">Open 💐</button>
-<div id="bouquet" style="display:none;font-size:60px;">💐🌹🌸🌷🌺</div>
-<button onclick="show(11)">Bye Page 😜</button>
+<div id="bouquet" style="display:none;font-size:60px;">💐🌹🌸🌷</div>
+<button onclick="show(10)">Last Page 😜</button>
 </div></div>
 
-<!-- PAGE 11 FINAL -->
-<div class="page" id="p11"><div class="card">
-<h3>Okay okay bye now 😜💗</h3>
+<!-- PAGE 10 FINAL BYE -->
+<div class="page" id="p10"><div class="card">
+<h3>Okay bye now 😜💗</h3>
 <p>
 Oyy Lokesh 😌  
 Go do your work!  
 But miss me little bit 🥹💖  
 Text me after seeing this okay? 😤💗
 </p>
-<button onclick="pop('Still here ah? Go message me 😜')">One Last Click 😝</button>
+<button onclick="pop('Still here ah? Go text me 😜')">One last click 😝</button>
 <button onclick="show(1)">Restart 🔁</button>
 </div></div>
 
@@ -222,7 +217,8 @@ You came into my life and made ordinary days special.
 You are my calm, my smile, my favorite notification.
 Everything happens for a reason.
 We should always stay together in any situation.
-Forever yours, Navya 🤍🫶`;
+Forever yours,
+Navya 🤍🫶`;
 
 let i=0;
 (function type(){
@@ -236,20 +232,19 @@ let i=0;
 function jump(){
  pop("No clicking allowed 😝 Say YES only!");
  noBtn.style.position="absolute";
- noBtn.style.left=Math.random()*200+"px";
- noBtn.style.top=Math.random()*300+"px";
+ noBtn.style.left=Math.random()*250+"px";
+ noBtn.style.top=Math.random()*250+"px";
 }
 
 /* quiz */
 let quiz=[
 ["When relationship started?","Jan5 2023","Jan5 2022","March 1","Jan5 2022"],
-["Our first kiss?","Jan19 2026","Feb 1 2026","Jan 27 2026","Jan19 2026"],
+["First kiss?","Jan19 2026","Feb1 2026","Jan27 2026","Jan19 2026"],
 ["What I call you?","Nanna","Bujji","Bangaram","Bangaram"],
 ["Who loves more?","Me","You","Both","Me"]
 ];
 
 let qi=0,score=0;
-function startQuiz(){show(5);loadQ();}
 function loadQ(){
  let q=quiz[qi];
  qEl.innerText=q[0];
@@ -258,13 +253,14 @@ function loadQ(){
 <button onclick="ans('${q[3]}')">${q[3]}</button>`;
 }
 let qEl=document.getElementById("q");
+loadQ();
 
 function ans(a){
  if(a==quiz[qi][4]){score++;pop("Correct 😍");}
  else pop("Wrong 😜");
  qi++;
  if(qi<quiz.length) loadQ();
- else{finalScore.innerText="Score: "+score+" 💖";show(6);}
+ else{finalScore.innerText=score+" / 4 💖";show(5);}
 }
 
 /* slideshow */
@@ -275,7 +271,7 @@ let photos=[
 ];
 let pi=0;
 setInterval(()=>{
- if(p7.classList.contains("active")){
+ if(p6.classList.contains("active")){
   photo.src=photos[pi];
   pi=(pi+1)%photos.length;
  }
