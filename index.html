@@ -14,7 +14,7 @@ body{
  overflow-x:hidden;
 }
 
-/* pages */
+/* Pages */
 .page{display:none;min-height:100vh;justify-content:center;align-items:center;}
 .active{display:flex;}
 
@@ -37,7 +37,7 @@ button{
  font-size:15px;
 }
 
-/* floating hearts */
+/* Floating Hearts */
 .heart{
  position:fixed;
  width:25px;height:25px;
@@ -57,7 +57,7 @@ button{
 .heart:after{left:-12px;}
 @keyframes floatUp{from{bottom:-30px;}to{bottom:110vh;}}
 
-/* popup */
+/* Popup */
 .popup{
  position:fixed;inset:0;
  background:rgba(0,0,0,.4);
@@ -67,7 +67,7 @@ button{
  background:white;padding:20px;border-radius:20px;width:80%;
 }
 
-/* kiss */
+/* Kiss */
 .kiss{position:fixed;font-size:28px;animation:kissFly 2s forwards;}
 @keyframes kissFly{to{opacity:0;transform:translateY(-150px) scale(2);}}
 </style>
@@ -75,27 +75,27 @@ button{
 
 <body>
 
-<!-- POPUP -->
+<!-- Popup -->
 <div class="popup" id="popup">
 <div class="popupBox">
 <p id="popText"></p>
-<button onclick="closePop()">OK 💖</button>
+<button onclick="popup.style.display='none'">OK 💖</button>
 </div></div>
 
-<!-- PAGE 1 PASSWORD -->
+<!-- PAGE 1 -->
 <div class="page active" id="p1"><div class="card">
 <h3>Secret Page for you 😌💗</h3>
 <input id="pass" type="password" placeholder="Password">
 <button onclick="unlock()">Open 💌</button>
 </div></div>
 
-<!-- PAGE 2 TYPING -->
+<!-- PAGE 2 TYPING LETTER -->
 <div class="page" id="p2"><div class="card">
 <p id="type"></p>
 <button onclick="show(3)">Next 😘</button>
 </div></div>
 
-<!-- PAGE 3 VALENTINE -->
+<!-- PAGE 3 -->
 <div class="page" id="p3"><div class="card">
 <h3>Will you be my Valentine? 💖</h3>
 <p>Try clicking No button 😜</p>
@@ -107,7 +107,7 @@ button{
 <div class="page" id="p4"><div class="card">
 <h3>Ready for Love Quiz? 😜</h3>
 <button onclick="startQuiz()">Yes 😎</button>
-<button onclick="pop(randomNoQuiz())">No 😏</button>
+<button onclick="pop('Scared ah? 😂 Try anyway!')">No 😏</button>
 </div></div>
 
 <!-- PAGE 5 QUIZ -->
@@ -136,7 +136,7 @@ But I need more memories for lifetime😘
 <button onclick="show(8)">Next 💕</button>
 </div></div>
 
-<!-- PAGE 8 LOVE LETTER -->
+<!-- PAGE 8 LONG LETTER -->
 <div class="page" id="p8"><div class="card">
 <p>
 Nanna …🫶  
@@ -153,13 +153,12 @@ Life ekkadiki theeskelina, you’re really special in my heart.
 Mana memories anni naku chala important.  
 You’re not just my boyfriend, nuvvu na person 😌💗  
 Lucky ga feel avtanu ninnu na life lo pettinanduku.  
-Always yours,  
-Navya 💞
+Always yours, Navya 💞
 </p>
 <button onclick="show(9)">Next 😘</button>
 </div></div>
 
-<!-- PAGE 9 GIFT -->
+<!-- PAGE 9 -->
 <div class="page" id="p9"><div class="card">
 <p>
 Waiting for your Valentine gift too 😜  
@@ -170,25 +169,24 @@ But chocolate + hug isthe inka baguntadhi 😉💗
 <button onclick="show(10)">Bouquet 💐</button>
 </div></div>
 
-<!-- PAGE 10 BOUQUET -->
+<!-- PAGE 10 -->
 <div class="page" id="p10"><div class="card">
 <h3>This bouquet is for you 💐</h3>
 <button onclick="flowers()">Open 💐</button>
 <div id="bouquet" style="display:none;font-size:60px;">💐🌹🌸🌷🌺</div>
-<button onclick="show(11)">Go to Bye Page 😜</button>
+<button onclick="show(11)">Bye Page 😜</button>
 </div></div>
 
-<!-- PAGE 11 FINAL BYE -->
+<!-- PAGE 11 FINAL -->
 <div class="page" id="p11"><div class="card">
 <h3>Okay okay bye now 😜💗</h3>
 <p>
 Oyy Lokesh 😌  
-Now go do your work!  
-Don’t just sit thinking about me all day 😏  
-But also… miss me little bit 🥹💖  
+Go do your work!  
+But miss me little bit 🥹💖  
 Text me after seeing this okay? 😤💗
 </p>
-<button onclick="pop(randomBye())">One Last Click 😝</button>
+<button onclick="pop('Still here ah? Go message me 😜')">One Last Click 😝</button>
 <button onclick="show(1)">Restart 🔁</button>
 </div></div>
 
@@ -196,43 +194,6 @@ Text me after seeing this okay? 😤💗
 
 /* popup */
 function pop(m){popText.innerText=m;popup.style.display="flex";}
-function closePop(){popup.style.display="none";}
-
-/* funny popup lines */
-function randomWrongPass(){
- return ["Wrong password 😜 Fake Lokesh ah?",
-         "Ayyoo wrong bangaram 😂",
-         "Password wrong but still cute 😏"]
-         [Math.floor(Math.random()*3)];
-}
-
-function randomNoQuiz(){
- return ["Scared ah? 😂",
-         "You can’t escape this quiz 😜",
-         "Come on try it 😏"]
-         [Math.floor(Math.random()*3)];
-}
-
-function randomRight(){
- return ["Correct 😍 Wahh memory strong!",
-         "Aww you remember everything 🥹",
-         "Correct bangaram 💖"]
-         [Math.floor(Math.random()*3)];
-}
-
-function randomWrong(){
- return ["Wrong 😜 Love memory weak ah?",
-         "Ayyoo wrong 😂",
-         "Forgot our story ah? 😏"]
-         [Math.floor(Math.random()*3)];
-}
-
-function randomBye(){
- return ["Still here ah? Go text me 😜",
-         "Go message me now 😌",
-         "Missing me already? 😂"]
-         [Math.floor(Math.random()*3)];
-}
 
 /* hearts */
 setInterval(()=>{
@@ -252,22 +213,21 @@ function show(n){
 /* password */
 function unlock(){
  if(pass.value=="love") show(2);
- else pop(randomWrongPass());
+ else pop("Wrong password 😜");
 }
 
-/* typing message */
+/* typing letter */
 let msg=`Dear Lokesh 💌
 You came into my life and made ordinary days special.
 You are my calm, my smile, my favorite notification.
 Everything happens for a reason.
 We should always stay together in any situation.
-Forever yours,
-Navya 🤍🫶`;
+Forever yours, Navya 🤍🫶`;
 
 let i=0;
 (function type(){
  if(i<msg.length){
-  document.getElementById("type").innerHTML+=msg[i++];
+  type.innerHTML+=msg[i++];
   setTimeout(type,40);
  }
 })();
@@ -280,29 +240,28 @@ function jump(){
  noBtn.style.top=Math.random()*300+"px";
 }
 
-/* QUIZ */
+/* quiz */
 let quiz=[
 ["When relationship started?","Jan5 2023","Jan5 2022","March 1","Jan5 2022"],
 ["Our first kiss?","Jan19 2026","Feb 1 2026","Jan 27 2026","Jan19 2026"],
-["What I call you when I get more love?","Nanna","Bujji","Bangaram","Bangaram"],
+["What I call you?","Nanna","Bujji","Bangaram","Bangaram"],
 ["Who loves more?","Me","You","Both","Me"]
 ];
 
 let qi=0,score=0;
-
 function startQuiz(){show(5);loadQ();}
-
 function loadQ(){
  let q=quiz[qi];
- document.getElementById("q").innerText=q[0];
+ qEl.innerText=q[0];
  opts.innerHTML=`<button onclick="ans('${q[1]}')">${q[1]}</button>
 <button onclick="ans('${q[2]}')">${q[2]}</button>
 <button onclick="ans('${q[3]}')">${q[3]}</button>`;
 }
+let qEl=document.getElementById("q");
 
 function ans(a){
- if(a==quiz[qi][4]){score++;pop(randomRight());}
- else pop(randomWrong());
+ if(a==quiz[qi][4]){score++;pop("Correct 😍");}
+ else pop("Wrong 😜");
  qi++;
  if(qi<quiz.length) loadQ();
  else{finalScore.innerText="Score: "+score+" 💖";show(6);}
