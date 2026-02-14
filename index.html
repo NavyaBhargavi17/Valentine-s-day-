@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<title>For Lokesh ❤️</title>
+
+<style>
+
+body{
+  margin:0;
+  font-family:Poppins;
+  background:linear-gradient(135deg,#fdf0f3,#f7d9e3);
+  color:#333;
+  text-align:center;
+}
+
+/* Pages */
+.page{
+  display:none;
+  height:100vh;
+  justify-content:center;
+  align-items:center;
+}
+
+.active{
+  display:flex;
+}
+
+/* Card */
+.card{
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(12px);
+  padding:30px;
+  border-radius:20px;
+  width:85%;
+  max-width:350px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Headings */
+h2,h3{
+  font-family:"Playfair Display";
+  color:#b76e79;
+}
+
+/* Buttons */
+button{
+  padding:12px 22px;
+  border:none;
+  border-radius:30px;
+  background:#b76e79;
+  color:white;
+  font-size:14px;
+  margin:8px;
+}
+
+/* Input */
+input{
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  width:80%;
+}
+
+/* Images */
+img{
+  width:200px;
+  height:250px;
+  object-fit:cover;
+  border-radius:15px;
+  margin-top:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 PASSWORD -->
+<div class="page active" id="p1">
+<div class="card">
+<h2>Private Page 🤍</h2>
+<p>Only for Lokesh</p>
+
+<input type="password" id="pass" placeholder="Enter password"><br><br>
+<button onclick="unlock()">Unlock</button>
+</div>
+</div>
+
+<!-- PAGE 2 LETTER -->
+<div class="page" id="p2">
+<div class="card">
+<h2>Dear Lokesh</h2>
+
+<p>
+You came into my life  
+and made ordinary days special.  
+
+You are my calm,  
+my smile,  
+my favorite notification.  
+
+If love was coding,  
+you'd be my infinite loop.  
+
+Forever yours,  
+Navya 🤍
+</p>
+
+<button onclick="next(3)">Next</button>
+</div>
+</div>
+
+<!-- PAGE 3 GAME -->
+<div class="page" id="p3">
+<div class="card">
+<h3>Will you be my Valentine?</h3>
+
+<button onclick="yes()">Yes</button>
+<button id="noBtn" onclick="jump()">No</button>
+
+<br>
+<button onclick="back(2)">Back</button>
+</div>
+</div>
+
+<!-- PAGE 4 SLIDESHOW -->
+<div class="page" id="p4">
+<div class="card">
+<h2>You chose YES 🤍</h2>
+
+<img id="slide">
+
+<p>
+You just made my heart happy.  
+I feel lucky to have you Lokesh 🤍
+</p>
+
+<button onclick="next(5)">Next</button>
+</div>
+</div>
+
+<!-- PAGE 5 FINAL -->
+<div class="page" id="p5">
+<div class="card">
+<h2>One Last Thing</h2>
+
+<p>
+No matter where life goes,  
+I just want you beside me.  
+
+You + Me  
+is my favorite love story.  
+
+Happy Valentine's Day 🤍
+</p>
+
+<h3>This is just the beginning... 😉</h3>
+
+<p>Now come claim your hug 💞</p>
+
+<button onclick="back(4)">Back</button>
+</div>
+</div>
+
+<script>
+
+// PASSWORD
+function unlock(){
+ if(document.getElementById("pass").value=="forever"){
+  show(2);
+ } else alert("Hint: what are we?");
+}
+
+// PAGE CONTROL
+function show(n){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById("p"+n).classList.add("active");
+}
+
+function next(n){show(n);}
+function back(n){show(n);}
+
+// JUMPING NO BUTTON
+function jump(){
+ let b=document.getElementById("noBtn");
+ b.style.position="absolute";
+ b.style.left=Math.random()*250+"px";
+ b.style.top=Math.random()*400+"px";
+}
+
+// YES BUTTON
+function yes(){
+ show(4);
+}
+
+// PHOTO SLIDESHOW
+let pics=[
+"https://i.postimg.cc/Ghh6KT8Y/Snapchat-1471127375.jpg",
+"https://i.postimg.cc/LsBVGvGH/Snapchat-1742409982.jpg",
+"https://i.postimg.cc/4yKV412c/Screenshot-20251022-212455.jpg"
+];
+
+let i=0;
+let img=document.getElementById("slide");
+
+setInterval(()=>{
+ img.src=pics[i];
+ i=(i+1)%pics.length;
+},2000);
+
+</script>
+
+</body>
+</html>
