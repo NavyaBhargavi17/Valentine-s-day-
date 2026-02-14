@@ -2,13 +2,11 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-<title>For My Love 💖</title>
+<title>For My Bangaram 💖</title>
 
 <style>
-
 body{
  margin:0;
  font-family:Poppins;
@@ -17,25 +15,17 @@ body{
  overflow-x:hidden;
 }
 
-/* pages */
-.page{
- display:none;
- min-height:100vh;
- justify-content:center;
- align-items:center;
-}
+.page{display:none;min-height:100vh;justify-content:center;align-items:center;}
 .active{display:flex;}
 
 .card{
  background:white;
  padding:25px;
  border-radius:25px;
- width:90%;
- max-width:360px;
+ width:90%;max-width:360px;
  box-shadow:0 8px 25px rgba(255,182,193,0.4);
 }
 
-/* buttons */
 button{
  padding:12px 20px;
  border:none;
@@ -43,107 +33,86 @@ button{
  background:#ff9bb3;
  color:white;
  margin:8px;
- font-size:15px;
 }
 
 /* hearts */
 .heart{
  position:fixed;
- width:24px;
- height:24px;
+ width:24px;height:24px;
  background:#ff6f91;
  bottom:-30px;
  transform:rotate(45deg);
  animation:floatUp 6s linear forwards;
 }
 .heart::before,.heart::after{
- content:'';
- position:absolute;
+ content:'';position:absolute;
  width:24px;height:24px;
- background:#ff6f91;
- border-radius:50%;
+ background:#ff6f91;border-radius:50%;
 }
 .heart::before{top:-12px;}
 .heart::after{left:-12px;}
-
-@keyframes floatUp{
- from{bottom:-30px;}
- to{bottom:110vh;}
-}
+@keyframes floatUp{from{bottom:-30px;}to{bottom:110vh;}}
 
 /* popup */
 .popup{
- position:fixed;
- inset:0;
+ position:fixed;inset:0;
  background:rgba(0,0,0,.4);
- display:none;
- justify-content:center;
- align-items:center;
+ display:none;justify-content:center;align-items:center;
  z-index:99;
 }
-
 .popupBox{
- background:white;
- padding:25px;
- border-radius:20px;
- width:80%;
- max-width:300px;
+ background:white;padding:25px;border-radius:20px;width:80%;max-width:300px;
 }
 
 /* kiss */
 .kiss{
- position:fixed;
- font-size:30px;
+ position:fixed;font-size:30px;
  animation:kissFly 2s forwards;
 }
 @keyframes kissFly{
  from{opacity:1;}
- to{opacity:0; transform:translateY(-150px) scale(2);}
+ to{opacity:0;transform:translateY(-150px) scale(2);}
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- 🔊 SOUNDS -->
+<!-- SOUNDS -->
 <audio id="clickS" src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b0c4f.mp3"></audio>
-<audio id="kissS" src="https://cdn.pixabay.com/audio/2022/03/10/audio_c8c8a73467.mp3"></audio>
 <audio id="winS" src="https://cdn.pixabay.com/audio/2022/03/26/audio_1c8e6e4a42.mp3"></audio>
+<audio id="kissS" src="https://cdn.pixabay.com/audio/2022/03/10/audio_c8c8a73467.mp3"></audio>
 
-<!-- 💖 POPUP -->
+<!-- POPUP -->
 <div class="popup" id="popup">
- <div class="popupBox">
-  <p id="popText"></p>
-  <button onclick="closePop()">OK 💖</button>
- </div>
+<div class="popupBox">
+<p id="popText"></p>
+<button onclick="closePop()">OK 💖</button>
+</div>
 </div>
 
 <!-- PAGE 1 -->
 <div class="page active" id="p1">
 <div class="card">
-<h3>Secret Page 😌💗</h3>
-<input id="pass" type="password" placeholder="Password"><br>
+<h3>Secret Page for you 😌💗</h3>
+<input id="pass" type="password">
 <button onclick="unlock()">Open 💌</button>
-</div>
-</div>
+</div></div>
 
-<!-- PAGE 2 -->
+<!-- PAGE 2 TYPING -->
 <div class="page" id="p2">
 <div class="card">
 <p id="type"></p>
 <button onclick="show(3)">Next 😘</button>
-</div>
-</div>
+</div></div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 VALENTINE -->
 <div class="page" id="p3">
 <div class="card">
 <h3>Will you be my Valentine? 💖</h3>
 <button onclick="show(4)">Yes 💗</button>
 <button onclick="runNo()" id="noBtn">No 😝</button>
-</div>
-</div>
+</div></div>
 
 <!-- PAGE 4 QUIZ INTRO -->
 <div class="page" id="p4">
@@ -151,8 +120,7 @@ button{
 <h3>Ready for Love Quiz? 😜</h3>
 <button onclick="quizYes()">Yes 😎</button>
 <button onclick="quizNo()">No 😏</button>
-</div>
-</div>
+</div></div>
 
 <!-- PAGE 5 QUIZ -->
 <div class="page" id="p5">
@@ -160,59 +128,63 @@ button{
 <h3>Love Quiz 💖</h3>
 <p id="q"></p>
 <div id="opts"></div>
-</div>
-</div>
+</div></div>
 
 <!-- PAGE 6 SCORE -->
 <div class="page" id="p6">
 <div class="card">
 <h3>Your score 😍</h3>
 <p id="finalScore"></p>
-<button onclick="show(7)">Next 💞</button>
-</div>
-</div>
+<button onclick="show(7)">Memories 📸</button>
+</div></div>
 
-<!-- PAGE 7 KISS -->
+<!-- PAGE 7 MEMORIES -->
 <div class="page" id="p7">
+<div class="card">
+<h3>Our Memories 📸</h3>
+<img id="photo" width="220"><br>
+<button onclick="show(8)">Next 💕</button>
+</div></div>
+
+<!-- PAGE 8 LETTER -->
+<div class="page" id="p8">
+<div class="card">
+<p>
+Nanna 🫶  
+Ninnu kalavadam na life lo best thing.  
+You became my safe place and happiness.  
+Nee smile, nee nature, nee cute habits — everything precious 😌💗  
+You’re not just my boyfriend, nuvvu na person 💞  
+Always yours, Navya 💖
+</p>
+<button onclick="show(9)">Next 😘</button>
+</div></div>
+
+<!-- PAGE 9 KISS -->
+<div class="page" id="p9">
 <div class="card">
 <h3>Sending you kisses 💋</h3>
 <button onclick="kiss()">Tap 💋</button>
-<button onclick="show(8)">Next 💗</button>
-</div>
-</div>
+<button onclick="show(10)">Next 💗</button>
+</div></div>
 
-<!-- PAGE 8 BOUQUET -->
-<div class="page" id="p8">
+<!-- PAGE 10 BOUQUET -->
+<div class="page" id="p10">
 <div class="card">
-<h3>This is for you 💐</h3>
-
+<h3>This bouquet is for you 💐</h3>
 <button onclick="flowers()">Open Bouquet 💐</button>
-
-<div id="bouquet" style="display:none;font-size:60px;">
-💐🌹🌸🌷🌺
-</div>
-
-<p id="bmsg" style="display:none;">
-For the one who makes me smile 😄💖
-</p>
-
-</div>
-</div>
+<div id="bouquet" style="display:none;font-size:60px;">💐🌹🌸🌷🌺</div>
+<p id="bmsg" style="display:none;">For my favorite person 😄💖</p>
+</div></div>
 
 <script>
 
-/* sounds */
-function play(id){
- document.getElementById(id).currentTime=0;
- document.getElementById(id).play();
-}
+/* sound */
+function play(id){document.getElementById(id).play();}
 
 /* popup */
-function pop(msg){
- popText.innerText=msg;
- popup.style.display="flex";
-}
-function closePop(){ popup.style.display="none"; }
+function pop(msg){popText.innerText=msg;popup.style.display="flex";}
+function closePop(){popup.style.display="none";}
 
 /* hearts */
 setInterval(()=>{
@@ -232,13 +204,16 @@ function show(n){
 
 /* password */
 function unlock(){
- if(pass.value=="love"){
-  show(2);
- } else pop("Wrong password 😜");
+ if(pass.value=="love") show(2);
+ else pop("Wrong password 😜");
 }
 
-/* typing */
-let msg="Dear love 💌 You make my life special.";
+/* typing message */
+let msg=`Dear Lokesh  
+You came into my life and made ordinary days special.  
+You are my calm, my smile, my favorite notification.  
+We should always stay together.  
+Forever yours, Navya 🤍🫶`;
 let i=0;
 (function type(){
  if(i<msg.length){
@@ -256,44 +231,54 @@ function runNo(){
 }
 
 /* quiz intro */
-function quizYes(){
- pop("I knew it 😎");
- show(5);
-}
-function quizNo(){
- pop("Scared ah? 😜 Try anyway!");
-}
+function quizYes(){pop("I knew it 😎");show(5);}
+function quizNo(){pop("Scared ah? 😜 Try anyway!");}
 
-/* quiz */
+/* QUIZ */
 let quiz=[
 ["When relationship started?","Jan5 2023","Jan5 2022","March 1","Jan5 2022"],
+["Our proper First kiss?","Jan19 2026","Feb 1 2026","Jan 27 2026","Jan19 2026"],
+["What I call you when I get more love?","Nanna","Bujji","Bangaram","Bangaram"],
 ["Who loves more?","Me","You","Both","Me"]
 ];
 let qi=0,score=0;
 
 function loadQ(){
  let q=quiz[qi];
- document.getElementById("q").innerText=q[0];
+ qDiv.innerHTML=q[0];
  opts.innerHTML=
  `<button onclick="ans('${q[1]}')">${q[1]}</button>
   <button onclick="ans('${q[2]}')">${q[2]}</button>
   <button onclick="ans('${q[3]}')">${q[3]}</button>`;
 }
+var qDiv=document.getElementById("q");
 loadQ();
 
 function ans(a){
  if(a==quiz[qi][4]){
-  score++;
-  play("winS");
-  pop("Correct 😍");
- } else pop("Wrong 😜");
+  score++; play("winS"); pop("Correct 😍");
+ }else pop("Wrong 😜");
  qi++;
  if(qi<quiz.length) loadQ();
  else{
-  finalScore.innerText="Score: "+score+" 💖";
+  finalScore.innerText="Score: "+score+" / "+quiz.length+" 💖";
   show(6);
  }
 }
+
+/* slideshow */
+let photos=[
+"https://i.postimg.cc/Ghh6KT8Y/Snapchat-1471127375.jpg",
+"https://i.postimg.cc/LsBVGvGH/Snapchat-1742409982.jpg",
+"https://i.postimg.cc/4yKV412c/Screenshot-20251022-212455.jpg"
+];
+let pi=0;
+setInterval(()=>{
+ if(p7.classList.contains("active")){
+  photo.src=photos[pi];
+  pi=(pi+1)%photos.length;
+ }
+},2000);
 
 /* kiss */
 function kiss(){
