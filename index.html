@@ -42,7 +42,7 @@ button{
  font-size:15px;
 }
 
-/* hearts */
+/* floating hearts */
 .heart{
  position:fixed;
  width:25px;height:25px;
@@ -97,7 +97,7 @@ button{
 </div>
 </div>
 
-<!-- PAGE 1 -->
+<!-- PAGE 1 PASSWORD -->
 <div class="page active" id="p1">
 <div class="card">
 <h3>Secret Page for you 😌💗</h3>
@@ -106,7 +106,7 @@ button{
 </div>
 </div>
 
-<!-- PAGE 2 -->
+<!-- PAGE 2 TYPING -->
 <div class="page" id="p2">
 <div class="card">
 <p id="typeText"></p>
@@ -114,7 +114,7 @@ button{
 </div>
 </div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 VALENTINE -->
 <div class="page" id="p3">
 <div class="card">
 <h3>Will you be my Valentine? 💖</h3>
@@ -124,8 +124,18 @@ button{
 </div>
 </div>
 
-<!-- PAGE 4 QUIZ -->
+<!-- PAGE 4 QUIZ INTRO -->
 <div class="page" id="p4">
+<div class="card">
+<h3>Love Quiz Ready? 😏</h3>
+<p>Let's see how well you know us 💕</p>
+<button onclick="startQuiz()">Start 😎</button>
+<button onclick="pop('Scared ah? 😜 Start press cheyy!')">No 😝</button>
+</div>
+</div>
+
+<!-- PAGE 5 QUIZ -->
+<div class="page" id="p5">
 <div class="card">
 <h3>Love Quiz 💖</h3>
 <p id="q"></p>
@@ -133,27 +143,27 @@ button{
 </div>
 </div>
 
-<!-- PAGE 5 SCORE -->
-<div class="page" id="p5">
+<!-- PAGE 6 SCORE -->
+<div class="page" id="p6">
 <div class="card">
 <h3>Your Score 😍</h3>
 <p id="finalScore"></p>
-<button onclick="show(6)">Memories 📸</button>
+<button onclick="show(7)">Memories 📸</button>
 </div>
 </div>
 
-<!-- PAGE 6 MEMORIES -->
-<div class="page" id="p6">
+<!-- PAGE 7 MEMORIES -->
+<div class="page" id="p7">
 <div class="card">
 <h3>Our Memories 📸</h3>
 <img id="photo" width="220" style="border-radius:20px;"><br>
 <p>These moments are special 🥹💗<br>But I need more memories for lifetime😘</p>
-<button onclick="show(7)">Next 💕</button>
+<button onclick="show(8)">Next 💕</button>
 </div>
 </div>
 
-<!-- PAGE 7 LOVE LETTER -->
-<div class="page" id="p7">
+<!-- PAGE 8 LOVE LETTER -->
+<div class="page" id="p8">
 <div class="card">
 <p>
 Nanna…🫶  
@@ -163,34 +173,33 @@ With you small moments feel big.
 You’re not just my boyfriend — nuvvu na person 😌💗  
 Always yours, Navya 💞
 </p>
-<button onclick="show(8)">Next 😘</button>
+<button onclick="show(9)">Next 😘</button>
 </div>
 </div>
 
-<!-- PAGE 8 GIFT -->
-<div class="page" id="p8">
+<!-- PAGE 9 GIFT -->
+<div class="page" id="p9">
 <div class="card">
 <p>
 Waiting for your Valentine gift 😜<br>
 Chocolate + hug kavali 😉💗
 </p>
 <button onclick="kissExplosion()">Kiss 💋</button>
-<button onclick="show(9)">Bouquet 💐</button>
+<button onclick="show(10)">Bouquet 💐</button>
 </div>
 </div>
 
-<!-- PAGE 9 BOUQUET -->
-<div class="page" id="p9">
+<!-- PAGE 10 BOUQUET -->
+<div class="page" id="p10">
 <div class="card">
 <h3>Flowers for you 💐</h3>
-<button onclick="flowers()">Open</button>
-<div id="bouquet" style="display:none;font-size:60px;">💐🌹🌷</div>
-<button onclick="show(10)">Next</button>
+<div style="font-size:60px;">💐🌹🌷</div>
+<button onclick="show(11)">Next 😘</button>
 </div>
 </div>
 
-<!-- PAGE 10 BYE -->
-<div class="page" id="p10">
+<!-- PAGE 11 BYE -->
+<div class="page" id="p11">
 <div class="card">
 <h3>Okay bye 😜</h3>
 <p>Miss me little bit 🥹💗<br>Text me after this 😤💗</p>
@@ -200,7 +209,7 @@ Chocolate + hug kavali 😉💗
 
 <script>
 
-/* popup */
+/* popup helper */
 function pop(msg){
  popText.innerText=msg;
  popup.style.display="flex";
@@ -224,42 +233,48 @@ function show(n){
 /* password */
 function unlock(){
  if(pass.value=="love") show(2);
- else pop("Wrong password 😜");
+ else pop("Wrong password 😜 Try again bangaram!");
 }
 
-/* typing */
+/* typing message */
 let msg=`Dear Lokesh 💌
 You came into my life and made ordinary days special.
 You are my calm, my smile, my favorite notification.
 Forever yours, Navya 🤍🫶`;
 
 let i=0;
-function type(){
+(function type(){
  if(i<msg.length){
   document.getElementById("typeText").innerHTML+=msg[i++];
   setTimeout(type,40);
  }
-}
-type();
+})();
 
-/* jumping no */
+/* jumping NO */
 function jump(){
- pop("No clicking allowed 😝 Say YES!");
+ pop("No clicking allowed 😝 Say YES only!");
  let b=document.getElementById("noBtn");
  b.style.position="absolute";
  b.style.left=Math.random()*250+"px";
  b.style.top=Math.random()*250+"px";
 }
 
-/* quiz */
+/* QUIZ */
 let quiz=[
 ["When relationship started?","Jan5 2023","Jan5 2022","March 1","Jan5 2022"],
-["First kiss?","Jan19 2026","Feb1 2026","Jan27","Jan19 2026"],
+["First kiss?","Jan19 2026","Feb1","Jan27","Jan19 2026"],
 ["What I call you?","Nanna","Bujji","Bangaram","Bangaram"],
 ["Who loves more?","Me","You","Both","Me"]
 ];
 
 let qi=0,score=0;
+
+function startQuiz(){
+ qi=0; score=0;
+ loadQ();
+ show(5);
+}
+
 function loadQ(){
  let q=quiz[qi];
  document.getElementById("q").innerText=q[0];
@@ -267,14 +282,28 @@ function loadQ(){
 <button onclick="ans('${q[2]}')">${q[2]}</button>
 <button onclick="ans('${q[3]}')">${q[3]}</button>`;
 }
-loadQ();
 
 function ans(a){
- if(a==quiz[qi][4]){score++;pop("Correct 😍");}
- else pop("Wrong 😜");
+ let funnyWrong=[
+ "Ayyoo wrong 😝",
+ "Think again bangaram 😜",
+ "Memory weak ah? 😂",
+ "Wrong but cute 💗"
+ ];
+
+ if(a==quiz[qi][4]){
+  score++;
+  pop("Correct 😍 Smart boy!");
+ } else {
+  pop(funnyWrong[Math.floor(Math.random()*funnyWrong.length)]);
+ }
+
  qi++;
  if(qi<quiz.length) loadQ();
- else{finalScore.innerText=score+" / 4 💖";show(5);}
+ else{
+  finalScore.innerText=score+" / 4 💖";
+  show(6);
+ }
 }
 
 /* slideshow */
@@ -285,7 +314,7 @@ let photos=[
 ];
 let pi=0;
 setInterval(()=>{
- if(document.getElementById("p6").classList.contains("active")){
+ if(document.getElementById("p7").classList.contains("active")){
   photo.src=photos[pi];
   pi=(pi+1)%photos.length;
  }
@@ -304,12 +333,7 @@ function kissExplosion(){
  }
 }
 
-/* bouquet */
-function flowers(){
- bouquet.style.display="block";
- pop("Flowers for you 💐");
-}
-
 </script>
+
 </body>
 </html>
